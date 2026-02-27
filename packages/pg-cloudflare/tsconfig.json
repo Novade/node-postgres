@@ -3,6 +3,7 @@
     "module": "node16",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "strict": true,
     "target": "es2020",
     "noImplicitAny": true,

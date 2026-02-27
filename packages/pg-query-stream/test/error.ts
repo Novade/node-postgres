@@ -1,7 +1,7 @@
 import assert from 'assert'
 import helper from './helper'
 import QueryStream from '../src'
-import { Pool, Client } from 'pg'
+import { Pool, Client } from '@novade/pg'
 
 helper('error', function (client) {
   it('receives error on stream', function (done) {

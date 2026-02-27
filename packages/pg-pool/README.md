@@ -40,7 +40,7 @@ const pool2 = new Pool({
 
 // you can supply a custom client constructor
 // if you want to use the native postgres client
-const NativeClient = require('pg').native.Client
+const NativeClient = require('@novade/pg').native.Client
 const nativePool = new Pool({ Client: NativeClient })
 
 // you can even pool pg-native clients directly

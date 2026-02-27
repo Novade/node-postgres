@@ -1,4 +1,4 @@
-import { Pool } from 'pg'
+import { Pool } from '@novade/pg'
 import QueryStream from '../src'
 
 describe('pool', function () {

@@ -138,7 +138,7 @@ describe('connection timeout', () => {
   })
 
   it('continues processing after a connection failure', (done) => {
-    const Client = require('pg').Client
+    const Client = require('@novade/pg').Client
     const orgConnect = Client.prototype.connect
     let called = false
 
@@ -173,7 +173,7 @@ describe('connection timeout', () => {
   })
 
   it('releases newly connected clients if the queued already timed out', (done) => {
-    const Client = require('pg').Client
+    const Client = require('@novade/pg').Client
 
     const orgConnect = Client.prototype.connect
 
@@ -228,7 +228,11 @@ describe('connection timeout', () => {
   })
 
   it('should connect if timeout is passed, but native client in connected state', (done) => {
-    const Client = require('pg').native.Client
+    const native = require('@novade/pg').native
+    if (!native) {
+      return done()
+    }
+    const Client = native.Client
 
     Client.prototype.connect = function (cb) {
       this._connected = true

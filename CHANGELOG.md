@@ -247,12 +247,12 @@ We do not include break-fix version release in this file.
 
 #### New features
 
-- Replace internal pooling code with [pg-pool](https://github.com/brianc/node-pg-pool). This is the first step in eventually deprecating and removing the singleton `pg.connect`. The pg-pool constructor is exported from node-postgres at `require('pg').Pool`. It provides a backwards compatible interface with `pg.connect` as well as a promise based interface & additional niceties.
+- Replace internal pooling code with [pg-pool](https://github.com/brianc/node-pg-pool). This is the first step in eventually deprecating and removing the singleton `pg.connect`. The pg-pool constructor is exported from node-postgres at `require('@novade/pg').Pool`. It provides a backwards compatible interface with `pg.connect` as well as a promise based interface & additional niceties.
 
 You can now create an instance of a pool and don't have to rely on the `pg` singleton for anything:
 
 ```
-var pg = require('pg')
+var pg = require('@novade/pg')
 
 var pool = new pg.Pool()
 
@@ -293,7 +293,7 @@ client.query('SELECT $1::text as name', ['brianc']).then(function (res) {
 
 #### Breaking Changes
 
-- `require('pg').native` now returns null if the native bindings cannot be found; previously, this threw an exception.
+- `require('@novade/pg').native` now returns null if the native bindings cannot be found; previously, this threw an exception.
 
 #### New Features
 

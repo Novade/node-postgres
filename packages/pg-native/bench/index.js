@@ -1,4 +1,4 @@
-const pg = require('pg').native
+const pg = require('@novade/pg').native
 const Native = require('../')
 
 const warmup = function (fn, cb) {

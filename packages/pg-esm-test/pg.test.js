@@ -11,7 +11,7 @@ import pg, {
   escapeLiteral,
   Result,
   TypeOverrides,
-} from 'pg'
+} from '@novade/pg'
 
 describe('pg', () => {
   it('should export Client constructor', () => {

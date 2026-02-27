@@ -93,6 +93,27 @@ If your change involves breaking backwards compatibility please please point tha
 5. Ensure you have the proper environment variables configured for connecting to the instance
 6. Run `yarn test` to run all the tests
 
+### Test environment variables
+
+Most integration tests use the standard PostgreSQL/libpq environment variables:
+
+```sh
+export PGHOST=localhost
+export PGPORT=5432
+export PGUSER=postgres
+export PGPASSWORD=password
+export PGDATABASE=test
+```
+
+Additional optional variables used by specific tests:
+
+- `SCRAM_TEST_PGUSER`, `SCRAM_TEST_PGPASSWORD`, `SCRAM_TEST_PGHOST`, `SCRAM_TEST_PGPORT`, `SCRAM_TEST_PGDATABASE`
+- `PGSSLMODE`
+- `PGPASSFILE`
+- `TEST_TIMEOUT`
+- `PG_TEST_NATIVE`
+- `ALLOW_EXIT_ON_IDLE`
+
 ## Troubleshooting and FAQ
 
 The causes and solutions to common errors can be found among the [Frequently Asked Questions (FAQ)](https://github.com/brianc/node-postgres/wiki/FAQ)

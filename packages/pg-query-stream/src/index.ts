@@ -1,5 +1,5 @@
 import { Readable } from 'stream'
-import { Submittable, Connection } from 'pg'
+import type { Submittable, Connection } from '@novade/pg'
 import Cursor from 'pg-cursor'
 
 interface QueryStreamConfig {
@@ -8,6 +8,8 @@ interface QueryStreamConfig {
   rowMode?: 'array'
   types?: any
 }
+
+const ASYNC_ITERATOR = (Symbol as any).asyncIterator || Symbol.for('Symbol.asyncIterator')
 
 class QueryStream extends Readable implements Submittable {
   cursor: any
@@ -50,6 +52,24 @@ class QueryStream extends Readable implements Submittable {
 
   public submit(connection: Connection): void {
     this.cursor.submit(connection)
+  }
+
+  public [ASYNC_ITERATOR](): AsyncIterableIterator<any> {
+    const stream = this as any
+
+    const iterator =
+      typeof stream.iterator === 'function' ? stream.iterator({ destroyOnReturn: true }) : super[ASYNC_ITERATOR]()
+    const originalReturn = iterator.return?.bind(iterator)
+
+    iterator.return = async (value?: any) => {
+      this.destroy()
+      if (originalReturn) {
+        return originalReturn(value)
+      }
+      return { done: true, value } as IteratorResult<any>
+    }
+
+    return iterator
   }
 
   public _destroy(_err: Error, cb: Function) {

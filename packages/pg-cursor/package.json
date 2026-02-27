@@ -24,11 +24,11 @@
   "author": "Brian M. Carlson",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^10.5.2",
-    "pg": "^8.18.0"
+    "@novade/pg": "^8.18.0",
+    "mocha": "^10.5.2"
   },
   "peerDependencies": {
-    "pg": "^8"
+    "@novade/pg": "^8"
   },
   "files": [
     "index.js",

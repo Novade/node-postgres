@@ -14,7 +14,7 @@ _requires pg>=2.8.1_
 ## use
 
 ```js
-const pg = require('pg')
+const pg = require('@novade/pg')
 const pool = new pg.Pool()
 const QueryStream = require('pg-query-stream')
 const JSONStream = require('JSONStream')

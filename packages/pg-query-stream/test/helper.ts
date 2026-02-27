@@ -1,4 +1,4 @@
-import pg from 'pg'
+import pg from '@novade/pg'
 
 export default function (name, cb) {
   describe(name, function () {
