@@ -99,6 +99,9 @@ class Connection extends EventEmitter {
       } catch (err) {
         return self.emit('error', err)
       }
+      if (self._keepAlive) {
+        self.stream.setKeepAlive(true, self._keepAliveInitialDelayMillis)
+      }
       self.attachListeners(self.stream)
       self.stream.on('error', reportStreamError)
 
